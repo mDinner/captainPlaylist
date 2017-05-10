@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @playlist.title %>
+</p>
+
+<p>
+  <strong>Origin:</strong>
+  <%= @playlist.origin %>
+</p>
+
+<p>
+  <strong>Origin user:</strong>
+  <%= @playlist.origin_user %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @playlist.url %>
+</p>
+
+<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
+<%= link_to 'Back', playlists_path %>

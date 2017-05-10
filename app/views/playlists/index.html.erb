@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Playlists</h1>
+
+<%= @me.inspect %>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Origin</th>
+      <th>Origin user</th>
+      <th>Url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @custom_playlists.each do |custom_playlist| %>
+      <tr>
+        <td><%= custom_playlist.name %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
