@@ -89,15 +89,16 @@ class UsersController < ApplicationController
 
     # Use Spotify Follow features
     spotify_user.follow(playlist)
-    spotify_user.follows?(artists)
-    spotify_user.unfollow(users)
+    #spotify_user.follows?(artists)
+    # spotify_user.unfollow(users)
 
     # Get user's top played artists and tracks
-    spotify_user.top_artists #=> (Artist array)
-    spotify_user.top_tracks(time_range: 'short_term') #=> (Track array)
+    # spotify_user.top_artists #=> (Artist array)
+    # spotify_user.top_tracks(time_range: 'short_term') #=> (Track array)
 
     # Check doc for more
-    Rails.logger.info "spotify_user: #{spotify_user}"
+    Rails.logger.info "spotify_user: #{spotify_user.inspect}"
+    redirect_to playlists_path
   end
 
   private
