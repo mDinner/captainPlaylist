@@ -98,7 +98,8 @@ class UsersController < ApplicationController
 
     # Check doc for more
     Rails.logger.info "spotify_user: #{spotify_user.inspect}"
-    redirect_to playlists_path
+    @spotify_user = spotify_user
+    render 'users/spotify_user'
   end
 
   private
