@@ -5,20 +5,23 @@
 <%= @me.inspect %>
 
 <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
-
-
-<% @custom_playlists.each do |custom_playlist| %>
-  <div class="playlist">
-    <h2><%= custom_playlist.name %></h2>
-    <% custom_playlist.tracks.each do |track| %>
-    <div>
-    <p><%= track.name %></p>
-    <p><%= track.artists[0].name %></p>
-    <p><%= track.album.name %></p>
+<br>
+<div class="playlists-wrap">
+  <% @custom_playlists.each do |custom_playlist| %>
+    <div class="playlist">
+      <p class="title"><%= custom_playlist.name %></p>
+        <div class="tracks">
+         <% custom_playlist.tracks.each do |track| %>
+            <div class="track">
+              <p><%= track.name %></p>
+              <p><%= track.artists[0].name %></p>
+              <p><%= track.album.name %></p>
+            </div>
+          <% end %>
+      </div>
     </div>
-    <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 
 

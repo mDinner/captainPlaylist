@@ -1,3 +1,34 @@
 // Place all the styles related to the Playlists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.playlists-wrap {
+	text-align: center;
+	
+	.playlist {
+		background-color: #383838;
+		border-radius: 5px;
+		display: inline-block;
+		height: auto;
+		max-height: 250px;
+		max-width: 300px;
+		padding: 5px 10px;
+		width: 30%;
+
+		.title {
+			color: #fff;
+		}
+
+		.tracks {
+			background-color: #fff;
+			border: 1px solid #a4a4a4;
+			max-height: 150px;
+			overflow: hidden;
+			overflow-y: scroll;
+
+			.track{
+				display: block
+			}
+		}
+	}
+}
