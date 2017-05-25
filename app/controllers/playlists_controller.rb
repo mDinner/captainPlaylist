@@ -1,17 +1,16 @@
 class PlaylistsController < ApplicationController
   before_action :set_playlist, only: [:show, :edit, :update, :destroy]
-
+  require 'rspotify'
   # GET /playlists
   # GET /playlists.json
+  # Playlist home
   def index
     # @playlists = Playlist.all
-    require 'rspotify'
-
-    @me = RSpotify::User.find('mdinner9')
-    Rails.logger.info "@me: #{@me}"
 
     @custom_playlists = RSpotify::Playlist.search('Rock')
     @custom_playlists = @custom_playlists[0..19]
+
+
     # GET www.api.spotify..derka
     # @playlists = ^^^
   end

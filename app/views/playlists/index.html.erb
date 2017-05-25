@@ -7,27 +7,18 @@
 <%= link_to 'Sign in with Spotify', '/auth/spotify' %>
 
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Origin</th>
-      <th>Origin user</th>
-      <th>Url</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @custom_playlists.each do |custom_playlist| %>
-      <tr>
-        <td><%= custom_playlist.name %></td>
-
-      </tr>
+<% @custom_playlists.each do |custom_playlist| %>
+  <div class="playlist">
+    <h2><%= custom_playlist.name %></h2>
+    <% custom_playlist.tracks.each do |track| %>
+    <div>
+    <p><%= track.name %></p>
+    <p><%= track.artists[0].name %></p>
+    <p><%= track.album.name %></p>
+    </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+<% end %>
 
-<br>
 
 
