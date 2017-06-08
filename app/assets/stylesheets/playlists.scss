@@ -3,17 +3,21 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .playlists-wrap {
-	text-align: center;
+	///////////////////////////////////////.[]'
+
+// Make title, track and artist all inline
+// add add to my playlist button
 	
 	.playlist {
 		background-color: #383838;
 		border-radius: 5px;
 		display: inline-block;
 		height: auto;
-		max-height: 250px;
-		max-width: 300px;
+		max-height: 300px;
+		// max-width: 600px;
 		padding: 5px 10px;
-		width: 30%;
+		width: 40%;
+		margin: 15px 25px 25px 25px;	
 
 		.title {
 			color: #fff;
@@ -22,13 +26,23 @@
 		.tracks {
 			background-color: #fff;
 			border: 1px solid #a4a4a4;
-			max-height: 150px;
+			max-height: 200px;
 			overflow: hidden;
 			overflow-y: scroll;
 
 			.track{
-				display: block
+				display: block;
+
+				// .track_name, .track_artist, .track_artist_name {
+				// 	display: inline-block;
+    // 				float: left;
+    // 				margin: 0px 15px 0px 15px;
+				// }
 			}
 		}
 	}
 }
+
+// display: inline-block;
+//     float: left;
+//     margin: 0px 0px 0px 5px;
