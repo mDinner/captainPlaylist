@@ -1,41 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Playlists</h1>
+<h1 class="inline-title">Playlists</h1>
 
-<%= @me.inspect %>
 
-<%= link_to 'Sign in with Spotify', '/auth/spotify' %>
+<% if session[:spotify_user] === nil %>
+  <%= link_to 'Sign in with Spotify', '/auth/spotify', {class: 'sign_in_button'} %>
+<% else %>
+  <div class="spotify-signed-in">
+    <p>Signed in as Spotify User: </p>
+    <h2><%= session[:spotify_user][:display_name] %></h2>
+  </div>
+<% end %>
+
 <br>
+
 <div class="playlists-wrap">
   <% @custom_playlists.each do |custom_playlist| %>
     <div class="playlist">
       <p class="title"><%= custom_playlist.name %></p>
+      <p>Save to Spotify</p>
+      <p>Save to my Playlist</p>
         <div class="tracks">
-        <table>
-          <thead>
-            <tr>
-              <th>Song</th>
-              <th>Artist</th>
-              <th>Album</th>
-            </tr>
-          </thead>
-
-          <tbody>
+         
+          <table>
             
-            <% custom_playlist.tracks.each do |track| %>
+            <thead>
+              <tr>
+                <th>Song</th>
+                <th>Artist</th>
+                <th>Album</th>
+              </tr>
+            </thead>
 
-            <tr>
-              <td><%= track.name %></td>
-              <td><%= track.artists[0].name %></td>
-              <td><%= track.album.name %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
+            <tbody>
+              <% custom_playlist.tracks.each do |track| %>
+              
+                <tr>
+                  <td><%= track.name %></td>
+                  <td><%= track.artists[0].name %></td>
+                  <td class="album_name"><%= track.album.name %></td>
+                </tr>
+            
+              <% end %>
+            </tbody>
+          </table>
         </div>
-
-
-<!--         <div class="tracks">
+        <!--      <div class="tracks">
          <% custom_playlist.tracks.each do |track| %>
             <div class="track">
               <p class="track_name"><%= track.name %></p>
@@ -43,10 +53,10 @@
               <p class="track_album_name"><%= track.album.name %></p>
             </div>
           <% end %>
-      </div> -->
-    </div>
-  <% end %>
-</div>
+      </div>  -->
+      </div>
+    <% end %>
+  </div>
 
 
 

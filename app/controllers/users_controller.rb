@@ -107,7 +107,9 @@ class UsersController < ApplicationController
 
 
     # Check doc for more
-    Rails.logger.info "spotify_user: #{@spotify_user.inspect}"
+      Rails.logger.info "spotify_user: #{@spotify_user.inspect}"
+
+      session[:spotify_user] = @spotify_user
     # @spotify_user = spotify_user
     render 'users/spotify_user'
   end

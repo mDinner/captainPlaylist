@@ -2,42 +2,60 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.playlists-wrap {
-	///////////////////////////////////////.[]'
+body {
+	.main {
 
-// Make title, track and artist all inline
-// add add to my playlist button
-	
-	.playlist {
-		background-color: #383838;
-		border-radius: 5px;
-		display: inline-block;
-		height: auto;
-		max-height: 300px;
-		// max-width: 600px;
-		padding: 5px 10px;
-		width: 40%;
-		margin: 15px 25px 25px 25px;	
-
-		.title {
-			color: #fff;
+		.inline-title {
+			display: inline-block;
 		}
 
-		.tracks {
-			background-color: #fff;
-			border: 1px solid #a4a4a4;
-			max-height: 200px;
-			overflow: hidden;
-			overflow-y: scroll;
+		.sign_in_button {
+		    color: white;
+		    background-color: green;
+		    padding: 5px 10px;
+		    border-radius: 10px;
+		    text-decoration: none;
+		    display: inline-block;
 
-			.track{
-				display: block;
+		    &:visited { color: white; }
+		}	
 
-				// .track_name, .track_artist, .track_artist_name {
-				// 	display: inline-block;
-    // 				float: left;
-    // 				margin: 0px 15px 0px 15px;
-				// }
+		.playlists-wrap {
+			///////////////////////////////////////.[]'
+
+		// Make title, track and artist all inline
+		// add add to my playlist button
+			
+			.playlist {
+				background-color: #383838;
+				border-radius: 5px;
+				display: inline-block;
+				height: auto;
+				max-height: 300px;
+				// max-width: 600px;
+				padding: 5px 10px;
+				width: 43%;
+				margin: 15px 25px 25px 25px;	
+
+				.title {
+					color: #fff;
+				}
+
+				.tracks {
+					background-color: #fff;
+					border: 1px solid #a4a4a4;
+					max-height: 200px;
+					overflow: hidden;
+					overflow-y: scroll;
+
+						.album_name {
+							width: 150px;
+						}
+
+					// .track{
+					// 	display: block;
+					// }
+				}
 			}
 		}
 	}
