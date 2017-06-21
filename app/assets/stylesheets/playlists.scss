@@ -34,19 +34,30 @@ body {
 				max-height: 300px;
 				// max-width: 600px;
 				padding: 5px 10px;
+				position: relative;
 				width: 43%;
 				margin: 15px 25px 25px 25px;	
 
 				.title {
-					color: #fff;
+					color: gray;
+					text-align: center;
+					margin: 10px;
 				}
 
 				.save-to-playlist {
 					color: #fff;
+					display: inline-block;
+			    left: -20px;
+					position: absolute;
+			    top: -20px;
 				}
 
 				.save-to-spotify {
 					color: #fff;
+					display: inline-block;					
+					position: absolute;
+				  right: -20px;
+				  top: -20px;
 				}
 
 				.tracks {

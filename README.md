@@ -49,3 +49,7 @@ next also - what should be on the home page when they're signed in? what about w
 also we're gonna need a css library and a color scheme. that's u.
 
 eventually we'll use active admin to make an admin portal
+
+
+
+Wednesday tasks: put Title, Artist, Album above the tables
