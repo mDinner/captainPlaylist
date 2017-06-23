@@ -18,7 +18,8 @@
   <% @custom_playlists.each do |custom_playlist| %>
     <div class="playlist">
       <p class="title"><%= custom_playlist.name %></p>
-        <p class="save-to-playlist">Save to my Playlist</p>
+        <p type="submit" class="save-to-playlist">Save to my Playlist</p>
+        
         <% if session[:spotify_user] === nil %>
             <p class="save-to-spotify guest">Save to Spotify</p>
         <% else %>
@@ -34,7 +35,7 @@
 
           <table>
             
-            <thead>
+            <thead class="tracks_header">
               <tr>
                 <th>Song</th>
                 <th>Artist</th>

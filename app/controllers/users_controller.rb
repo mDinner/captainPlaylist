@@ -114,6 +114,12 @@ class UsersController < ApplicationController
     render 'users/spotify_user'
   end
 
+  # Post /users/:id/addPlaylist/:playlist_id
+  def add_playlist
+    @playlist = Playlist.find(params[:id])
+    @current_user.playlists << playlist
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
