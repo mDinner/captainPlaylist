@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :users
   resources :playlists
 
-  root 'playlists#index'
+  root to: 'playlists#index'
 
   get '/auth/spotify/callback', to: 'users#spotify'
 

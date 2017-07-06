@@ -54,3 +54,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rest-client', '>= 1.8'
 gem 'rspotify', '~> 1.21.0'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'devise'
