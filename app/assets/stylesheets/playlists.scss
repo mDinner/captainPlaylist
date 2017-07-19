@@ -2,33 +2,89 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.playlists-wrap {
-	text-align: center;
-	
-	.playlist {
-		background-color: #383838;
-		border-radius: 5px;
-		display: inline-block;
-		height: auto;
-		max-height: 250px;
-		max-width: 300px;
-		padding: 5px 10px;
-		width: 30%;
+body {
+	.main {
 
-		.title {
-			color: #fff;
+		.inline-title {
+			display: inline-block;
 		}
 
-		.tracks {
-			background-color: #fff;
-			border: 1px solid #a4a4a4;
-			max-height: 150px;
-			overflow: hidden;
-			overflow-y: scroll;
+		.sign_in_button {
+		    color: white;
+		    background-color: green;
+		    padding: 5px 10px;
+		    border-radius: 10px;
+		    text-decoration: none;
+		    display: inline-block;
 
-			.track{
-				display: block
+		    &:visited { color: white; }
+		}	
+
+		.playlists-wrap {
+			///////////////////////////////////////.[]'
+
+		// Make title, track and artist all inline
+		// add add to my playlist button
+			
+			.playlist {
+				background-color: #383838;
+				border-radius: 5px;
+				display: inline-block;
+				height: auto;
+				max-height: 300px;
+				// max-width: 600px;
+				padding: 5px 10px;
+				position: relative;
+				width: 43%;
+				margin: 15px 25px 25px 25px;	
+
+				.title {
+					color: gray;
+					text-align: center;
+					margin: 10px;
+				}
+
+				.save-to-playlist {
+					color: #fff;
+					display: inline-block;
+			    left: -20px;
+					position: absolute;
+			    top: -20px;
+				}
+
+				.save-to-spotify {
+					color: #fff;
+					display: inline-block;					
+					position: absolute;
+				  right: -20px;
+				  top: -20px;
+				}
+
+				.tracks_header {
+					background-color: #383838;
+					color: #fff;
+				}
+
+				.tracks {
+					background-color: #fff;
+					border: 1px solid #a4a4a4;
+					max-height: 200px;
+					overflow: hidden;
+					overflow-y: scroll;
+
+						.album_name {
+							width: 150px;
+						}
+
+					// .track{
+					// 	display: block;
+					// }
+				}
 			}
 		}
 	}
 }
+
+// display: inline-block;
+//     float: left;
+//     margin: 0px 0px 0px 5px;

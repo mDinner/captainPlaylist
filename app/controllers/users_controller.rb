@@ -107,10 +107,17 @@ class UsersController < ApplicationController
 
 
     # Check doc for more
-    Rails.logger.info "spotify_user: #{@spotify_user.inspect}"
+      Rails.logger.info "spotify_user: #{@spotify_user.inspect}"
+
+      session[:spotify_user] = @spotify_user
     # @spotify_user = spotify_user
     render 'users/spotify_user'
   end
+
+  # Post /users/addSotifyPlaylist/:playlist_id
+  def add_spotify_playlist
+    @current_user.spotify_playlists << params[:playlist_id]
+  end 
 
   private
     # Use callbacks to share common setup or constraints between actions.

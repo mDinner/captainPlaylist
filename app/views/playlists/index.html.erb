@@ -1,27 +1,84 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Playlists</h1>
+<h1 class="inline-title">Playlists</h1>
 
-<%= @me.inspect %>
 
-<%= link_to 'Sign in with Spotify', '/auth/spotify' %>
+<% if session[:spotify_user] === nil %>
+  <%= link_to 'Sign in with Spotify', '/auth/spotify', {class: 'sign_in_button'} %>
+<% else %>
+  <div class="spotify-signed-in">
+    <p>Signed in as Spotify User: </p>
+    <h2><%= session[:spotify_user][:display_name] %></h2>
+  </div>
+<% end %>
+
 <br>
+
 <div class="playlists-wrap">
   <% @custom_playlists.each do |custom_playlist| %>
     <div class="playlist">
       <p class="title"><%= custom_playlist.name %></p>
+        <% if current_user === nil %>
+
+          <p type="submit" class="save-to-playlist not-logged-in"><%= link_to "Save to my Playlists", new_user_session_path %></p>
+
+        <% else %>
+
+        <%= link_to "Save to my Playlists", add_spotify_playlist_path(custom_playlist.id), method: :post %>
+
+          
+          <p type="submit" class="save-to-playlist logged-in">Save to my Playlists</p>
+        
+        <% end %>
+
+        <% if session[:spotify_user] === nil %>
+            <p class="save-to-spotify guest">Save to Spotify</p>
+        <% else %>
+            <p class="save-to-spotify user">Save to Spotify</p>
+        <% end %>
         <div class="tracks">
+        
+        <div class="add-playlist-modal">
+        <!-- log into spotify button and show the playlist link for them to copy -->
+
+        </div>
+
+
+          <table>
+            
+            <thead class="tracks_header">
+              <tr>
+                <th>Song</th>
+                <th>Artist</th>
+                <th>Album</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% custom_playlist.tracks.each do |track| %>
+              
+                <tr>
+                  <td><%= track.name %></td>
+                  <td><%= track.artists[0].name %></td>
+                  <td class="album_name"><%= track.album.name %></td>
+                </tr>
+            
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <!--      <div class="tracks">
          <% custom_playlist.tracks.each do |track| %>
             <div class="track">
-              <p><%= track.name %></p>
-              <p><%= track.artists[0].name %></p>
-              <p><%= track.album.name %></p>
+              <p class="track_name"><%= track.name %></p>
+              <p class="track_artist"><%= track.artists[0].name %></p>
+              <p class="track_album_name"><%= track.album.name %></p>
             </div>
           <% end %>
+      </div>  -->
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
 
 
