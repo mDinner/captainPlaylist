@@ -24,11 +24,10 @@
 
         <% else %>
 
-        <%= link_to "Save to my Playlists", add_spotify_playlist_path(custom_playlist.id), method: :post %>
+        <%= link_to "Save to my Playlists", add_playlist_path(custom_playlist.id), method: :post %>
 
-          
-          <p type="submit" class="save-to-playlist logged-in">Save to my Playlists</p>
-        
+          <!-- <p type="submit" class="save-to-playlist logged-in">Save to my Playlists</p> -->
+
         <% end %>
 
         <% if session[:spotify_user] === nil %>
