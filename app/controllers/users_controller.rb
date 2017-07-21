@@ -61,40 +61,41 @@ class UsersController < ApplicationController
     end
   end
 
+  # Now you can access user's private data, create playlists and much more
+
+  # Access private data
+  # @spotify_user.country = spotify_user.country
+  # @spotify_user.email = spotify_user.email
+
+  # Create playlist in user's Spotify account
+  # playlist = spotify_user.create_playlist!('my-awesome-playlist')
+
+  # Add tracks to a playlist in user's Spotify account
+  # tracks = RSpotify::Track.search('Know')
+  # playlist.add_tracks!(tracks)
+  # playlist.tracks.first.name #=> "Somebody That I Used To Know"
+
+  # Access and modify user's music library
+  # spotify_user.save_tracks!(tracks)
+  # spotify_user.saved_tracks.size #=> 20
+  # spotify_user.remove_tracks!(tracks)
+
+  # albums = RSpotify::Album.search('launeddas')
+  # spotify_user.save_albums!(albums)
+  # spotify_user.saved_albums.size #=> 10
+  # spotify_user.remove_albums!(albums)
+
+  # Use Spotify Follow features
+  # spotify_user.follow(playlist)
+  # spotify_user.follows?(artists)
+  # spotify_user.unfollow(users)
+
+  # Get user's top played artists and tracks
+  # spotify_user.top_artists #=> (Artist array)
+  # spotify_user.top_tracks(time_range: 'short_term') #=> (Track array)
+
   def spotify
     @spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
-    # Now you can access user's private data, create playlists and much more
-
-    # Access private data
-    # @spotify_user.country = spotify_user.country
-    # @spotify_user.email = spotify_user.email
-
-    # Create playlist in user's Spotify account
-    # playlist = spotify_user.create_playlist!('my-awesome-playlist')
-
-    # Add tracks to a playlist in user's Spotify account
-    # tracks = RSpotify::Track.search('Know')
-    # playlist.add_tracks!(tracks)
-    # playlist.tracks.first.name #=> "Somebody That I Used To Know"
-
-    # Access and modify user's music library
-    # spotify_user.save_tracks!(tracks)
-    # spotify_user.saved_tracks.size #=> 20
-    # spotify_user.remove_tracks!(tracks)
-
-    # albums = RSpotify::Album.search('launeddas')
-    # spotify_user.save_albums!(albums)
-    # spotify_user.saved_albums.size #=> 10
-    # spotify_user.remove_albums!(albums)
-
-    # Use Spotify Follow features
-    # spotify_user.follow(playlist)
-    # spotify_user.follows?(artists)
-    # spotify_user.unfollow(users)
-
-    # Get user's top played artists and tracks
-    # spotify_user.top_artists #=> (Artist array)
-    # spotify_user.top_tracks(time_range: 'short_term') #=> (Track array)
 
     @artists = {}
     @artists[:zeppelin] = RSpotify::Artist.search("led zeppelin").first
@@ -105,19 +106,62 @@ class UsersController < ApplicationController
     # doesn't work, i wanted all playlists by a user
     # @playlists = RSpotify::Playlist.search(@spotify_user.id)
 
-
     # Check doc for more
-      Rails.logger.info "spotify_user: #{@spotify_user.inspect}"
+    Rails.logger.info "spotify_user: #{@spotify_user.inspect}"
 
-      session[:spotify_user] = @spotify_user
+    session[:spotify_user] = @spotify_user
     # @spotify_user = spotify_user
     render 'users/spotify_user'
   end
 
-  # Post /users/addSotifyPlaylist/:playlist_id
+  # Post /users/add_playlist/:playlist_id
   def add_playlist
+    playlist_id = params[:playlist_id]
+    Rails.logger.info "playlist_id #{playlist_id}"
+
+
+    playlist = Playlist.where(origin_id: playlist_id).first
+    Rails.logger.info "PLAYLIST: #{playlist}"
+
+    # playlist.destroy
     user = User.find(@current_user.id)
-    user.playlists << params[:playlist_id]
+    Rails.logger.info "user.playlists.length: #{user.playlists.length}"
+
+    Rails.logger.info "user.playlists: #{user.playlists}"
+
+    # new playlist, create DB entry and add to user playlists
+    playlist_new = false
+
+    if (playlist == nil)
+      playlist_new = true
+      Rails.logger.info "playlist IS NEW!!!"
+      playlist = Playlist.new(origin_id: playlist_id)
+      user.playlists << playlist
+      # user.save!
+    end
+
+    # user_playlists = user.playlists
+    # if user doesn't have it
+    user_playlist = user.playlists.where(origin_id: playlist_id).first
+    Rails.logger.info "USER_PLAYLIST: #{user_playlist.inspect}"
+
+    if playlist_new === false and user_playlist == nil
+      Rails.logger.info "USER DOESN'T HAVE PLAYLIST"
+      user.playlists << playlist
+      # user.save!
+    else
+      Rails.logger.info "USER HAS PLAYLIST"
+    end
+
+
+
+
+    Rails.logger.info "user.playlists.LENGTH: #{user.playlists.length}"
+    Rails.logger.info "user.playlists[0]: #{user.playlists[0]}"
+    Rails.logger.info "user.playlists[1]: #{user.playlists[1]}"
+    Rails.logger.info "user.playlists[2]: #{user.playlists[2]}"
+    Rails.logger.info "user.playlists2: #{user.playlists}"
+
   end
 
   private

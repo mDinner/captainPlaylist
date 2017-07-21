@@ -15,5 +15,9 @@
   <%= @user.password %>
 </p>
 
+<% @user.spotify_playlists.each do |plist| %>
+  <p><%= plist %></p>
+<% end %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

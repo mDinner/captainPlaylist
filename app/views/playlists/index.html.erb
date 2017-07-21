@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% unless current_user === nil %>
+  <%= link_to 'My Playlists', user_path(current_user.id), {class: 'profile-link'} %>
+<% end %>
+
 <h1 class="inline-title">Playlists</h1>
 
 
@@ -36,35 +40,31 @@
             <p class="save-to-spotify user">Save to Spotify</p>
         <% end %>
         <div class="tracks">
-        
+
         <div class="add-playlist-modal">
         <!-- log into spotify button and show the playlist link for them to copy -->
 
         </div>
 
+        <table>
+          <thead class="tracks_header">
+            <tr>
+              <th>Song</th>
+              <th>Artist</th>
+              <th>Album</th>
+            </tr>
+          </thead>
 
-          <table>
-            
-            <thead class="tracks_header">
+          <tbody>
+            <% custom_playlist.tracks.each do |track| %>
               <tr>
-                <th>Song</th>
-                <th>Artist</th>
-                <th>Album</th>
+                <td><%= track.name %></td>
+                <td><%= track.artists[0].name %></td>
+                <td class="album_name"><%= track.album.name %></td>
               </tr>
-            </thead>
-
-            <tbody>
-              <% custom_playlist.tracks.each do |track| %>
-              
-                <tr>
-                  <td><%= track.name %></td>
-                  <td><%= track.artists[0].name %></td>
-                  <td class="album_name"><%= track.album.name %></td>
-                </tr>
-            
-              <% end %>
-            </tbody>
-          </table>
+            <% end %>
+          </tbody>
+        </table>
         </div>
         <!--      <div class="tracks">
          <% custom_playlist.tracks.each do |track| %>
