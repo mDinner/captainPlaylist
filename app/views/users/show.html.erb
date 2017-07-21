@@ -15,8 +15,13 @@
   <%= @user.password %>
 </p>
 
-<% @user.spotify_playlists.each do |plist| %>
-  <p><%= plist %></p>
+<% @playlists_data.each do |plist| %>
+	<h4>Playlist Title:</h4>
+  <p><%= plist[:title] %></p>
+  <h4>Tracks:</h4>
+  <% plist[:tracks].each do |track| %>
+  	<p><%= track.inspect %></p>
+  <% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

@@ -10,6 +10,53 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    user = User.find(@current_user.id)
+    if user
+      @playlists = user.playlists
+    end
+
+    # get custom and lean playlist/tracks data
+    @playlists_data = []
+
+    @playlists.each do |plist|
+      # find playlist
+      spotify_data = RSpotify::Playlist.find(plist.origin_user_id, plist.origin_id)
+      
+      # init storage variables
+      songs = []
+
+      data_obj = {
+        title: spotify_data.name,
+        tracks: []
+      }
+      
+      # extract data for each track
+      spotify_data.tracks.each do |track|
+        
+        # fresh song object
+        curr_song = {
+          artist: '',
+          title: '',
+          album: ''
+        }
+
+        # collect data, artists is an array, loop thru & add names
+        curr_song[:title] = track.name
+        curr_song[:album] = track.album.name
+
+        artists_name = ''
+        track.artists.each do |artist|
+          artists_name = artists_name + ' ' + artist.name.to_s
+        end
+        curr_song[:artist] = artists_name.strip!
+
+        # add to playlist songs array
+        songs.push(curr_song)
+      end
+      # add songs to data_obj and add that to @playlists_data
+      data_obj[:tracks] = songs
+      @playlists_data << data_obj
+    end
   end
 
   # GET /users/new
@@ -117,6 +164,7 @@ class UsersController < ApplicationController
   # Post /users/add_playlist/:playlist_id
   def add_playlist
     playlist_id = params[:playlist_id]
+    playlist_owner_id = params[:playlist_owner_id]
     Rails.logger.info "playlist_id #{playlist_id}"
 
 
@@ -135,7 +183,7 @@ class UsersController < ApplicationController
     if (playlist == nil)
       playlist_new = true
       Rails.logger.info "playlist IS NEW!!!"
-      playlist = Playlist.new(origin_id: playlist_id)
+      playlist = Playlist.new(origin_id: playlist_id, origin_user_id: playlist_owner_id)
       user.playlists << playlist
       # user.save!
     end
@@ -157,9 +205,9 @@ class UsersController < ApplicationController
 
 
     Rails.logger.info "user.playlists.LENGTH: #{user.playlists.length}"
-    Rails.logger.info "user.playlists[0]: #{user.playlists[0]}"
-    Rails.logger.info "user.playlists[1]: #{user.playlists[1]}"
-    Rails.logger.info "user.playlists[2]: #{user.playlists[2]}"
+    Rails.logger.info "user.playlists[0].inspect: #{user.playlists[0].inspect}"
+    Rails.logger.info "user.playlists[1].inspect: #{user.playlists[1].inspect}"
+    Rails.logger.info "user.playlists[2].inspect: #{user.playlists[2].inspect}"
     Rails.logger.info "user.playlists2: #{user.playlists}"
 
   end

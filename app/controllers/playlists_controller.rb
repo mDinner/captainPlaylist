@@ -7,11 +7,11 @@ class PlaylistsController < ApplicationController
   def index
     # @playlists = Playlist.all
 
-    @custom_playlists = RSpotify::Playlist.search('Rock')
+    @custom_playlists = RSpotify::Playlist.search('Rock', limit: 30)
     @custom_playlists = @custom_playlists[0..19]
 
     @custom_playlists.each do |p|
-      # Rails.logger.info "custom_playlist: #{p.inspect}"
+      Rails.logger.info "custom_playlist.id: #{p.owner.id}"
     end
 
     # GET www.api.spotify..derka

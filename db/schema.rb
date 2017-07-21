@@ -10,16 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720010216) do
+ActiveRecord::Schema.define(version: 20170721211842) do
 
   create_table "playlists", force: :cascade do |t|
     t.string   "title"
     t.string   "origin"
     t.string   "origin_user"
     t.string   "url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "origin_id"
+    t.string   "origin_user_id"
   end
 
   create_table "playlists_users", force: :cascade do |t|

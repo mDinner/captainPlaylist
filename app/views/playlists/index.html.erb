@@ -28,7 +28,7 @@
 
         <% else %>
 
-        <%= link_to "Save to my Playlists", add_playlist_path(custom_playlist.id), method: :post %>
+        <%= link_to "Save to my Playlists", add_playlist_path(custom_playlist.id, custom_playlist.owner.id), method: :post %>
 
           <!-- <p type="submit" class="save-to-playlist logged-in">Save to my Playlists</p> -->
 
