@@ -10,6 +10,9 @@ class PlaylistsController < ApplicationController
     @custom_playlists = RSpotify::Playlist.search('Rock')
     @custom_playlists = @custom_playlists[0..19]
 
+    @custom_playlists.each do |p|
+      # Rails.logger.info "custom_playlist: #{p.inspect}"
+    end
 
     # GET www.api.spotify..derka
     # @playlists = ^^^
