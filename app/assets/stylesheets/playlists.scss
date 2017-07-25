@@ -39,25 +39,27 @@ body {
 				margin: 15px 25px 25px 25px;	
 
 				.title {
-					color: gray;
+					color: lightgray;
 					text-align: center;
-					margin: 10px;
+					margin: 8px 10px 9px 10px;
+					font-size: 14px;
+					font-weight: 600;
 				}
 
 				.save-to-playlist {
 					color: #fff;
 					display: inline-block;
-			    left: -20px;
+					left: 10px;
 					position: absolute;
-			    top: -20px;
+					top: 12px;
 				}
 
 				.save-to-spotify {
 					color: #fff;
-					display: inline-block;					
+					display: inline-block;
 					position: absolute;
-				  right: -20px;
-				  top: -20px;
+					right: 13px;
+					top: 13px;
 				}
 
 				.tracks_header {

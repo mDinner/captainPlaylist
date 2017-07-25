@@ -28,7 +28,7 @@
 
         <% else %>
 
-        <%= link_to "Save to my Playlists", add_playlist_path(custom_playlist.id), method: :post %>
+          <%= link_to "Save to my Playlists", add_playlist_path(custom_playlist.id), {method: :post, class: 'save-to-playlist'} %>
 
           <!-- <p type="submit" class="save-to-playlist logged-in">Save to my Playlists</p> -->
 
@@ -37,7 +37,7 @@
         <% if session[:spotify_user] === nil %>
             <p class="save-to-spotify guest">Save to Spotify</p>
         <% else %>
-            <p class="save-to-spotify user">Save to Spotify</p>
+          <%= link_to "Save to Spotify", follow_playlist_on_spotify_path(custom_playlist.id, custom_playlist.owner.id), {method: :post, class: 'save-to-spotify user'} %>
         <% end %>
         <div class="tracks">
 

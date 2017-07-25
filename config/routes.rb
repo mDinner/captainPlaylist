@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   # to what the helper path is generated (you can see it when
   # you run $ bin/rake routes)
   post '/users/add_playlist/:playlist_id', to: 'users#add_playlist', as: 'add_playlist'
-
-
+  post '/users/follow_playlist_on_spotify/:playlist_id/:playlist_owner_id', to: 'users#follow_playlist_on_spotify', as: 'follow_playlist_on_spotify'
  #  scope '/users' do
  #  	scope ':id' do
  #  		scope 'addPlaylist' do

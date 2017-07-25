@@ -97,16 +97,6 @@ class UsersController < ApplicationController
   def spotify
     @spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
 
-    @artists = {}
-    @artists[:zeppelin] = RSpotify::Artist.search("led zeppelin").first
-
-    @songs = {}
-    @songs[:suitcase] = RSpotify::Track.search("man in a suitcase").first
-
-    # doesn't work, i wanted all playlists by a user
-    # @playlists = RSpotify::Playlist.search(@spotify_user.id)
-
-    # Check doc for more
     Rails.logger.info "spotify_user: #{@spotify_user.inspect}"
 
     session[:spotify_user] = @spotify_user
@@ -114,7 +104,17 @@ class UsersController < ApplicationController
     render 'users/spotify_user'
   end
 
-  # Post /users/add_playlist/:playlist_id
+  # POST '/users/follow_playlist_on_spotify/:playlist_id/:playlist_owner_id'
+  def follow_playlist_on_spotify
+    playlist = RSpotify::Playlist.find(params[:playlist_owner_id], params[:playlist_id])
+
+    user = RSpotify::User.find(session[:spotify_user]['id'])
+    Rails.logger.info "user!!!!!!!!!!!!!!: #{user.inspect}"
+    user.follow(playlist, public: false)
+    Rails.logger.info "SAVED SPOTIFY PLAYLIST"
+  end
+
+  # POST /users/add_playlist/:playlist_id
   def add_playlist
     playlist_id = params[:playlist_id]
     Rails.logger.info "playlist_id #{playlist_id}"
