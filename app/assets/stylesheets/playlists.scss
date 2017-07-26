@@ -18,14 +18,14 @@ body {
 		    display: inline-block;
 
 		    &:visited { color: white; }
-		}	
+		}
 
 		.playlists-wrap {
 			///////////////////////////////////////.[]'
 
 		// Make title, track and artist all inline
 		// add add to my playlist button
-			
+
 			.playlist {
 				background-color: #383838;
 				border-radius: 5px;
@@ -36,7 +36,7 @@ body {
 				padding: 5px 10px;
 				position: relative;
 				width: 43%;
-				margin: 15px 25px 25px 25px;	
+				margin: 15px 25px 25px 25px;
 
 				.title {
 					color: lightgray;

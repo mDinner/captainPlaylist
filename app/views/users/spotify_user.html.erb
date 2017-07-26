@@ -1,3 +1,5 @@
+<button><a href="/">Home</a></button>
+
 <h2>Spotify User</h2>
 
 <%= @spotify_user.inspect %>
@@ -5,26 +7,4 @@
 <h3>saved albums size</h3>
 <%= @spotify_user.saved_albums.size %>
 
-
-
-<h3>zeppelin</h3>
-<%= @artists[:zeppelin].inspect %>
-
-<h3>suitcase</h3>
-
-<%= @songs[:suitcase].inspect %>
-
-<h3>danceability</h3>
-<%= @songs[:suitcase].audio_features.danceability %>
-
-<h3>energy</h3>
-<%= @songs[:suitcase].audio_features.energy %>
-
-<h3>tempo</h3>
-<%= @songs[:suitcase].audio_features.tempo %>
-
-<h3>audio features inspection</h3>
-<%= @songs[:suitcase].audio_features.inspect %>
-
 <h3>Playlists (nothing yet)</h3>
-
