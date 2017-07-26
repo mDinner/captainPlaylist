@@ -95,7 +95,10 @@ class UsersController < ApplicationController
   # spotify_user.top_tracks(time_range: 'short_term') #=> (Track array)
 
   def spotify
-    @spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
+    oauth_data = request.env['omniauth.auth']
+    @spotify_user = RSpotify::User.new(oauth_data)
+
+    session[:spotify_oauth_data] = oauth_data
 
     Rails.logger.info "spotify_user: #{@spotify_user.inspect}"
 
@@ -107,11 +110,8 @@ class UsersController < ApplicationController
   # POST '/users/follow_playlist_on_spotify/:playlist_id/:playlist_owner_id'
   def follow_playlist_on_spotify
     playlist = RSpotify::Playlist.find(params[:playlist_owner_id], params[:playlist_id])
-
-    user = RSpotify::User.find(session[:spotify_user]['id'])
-    Rails.logger.info "user!!!!!!!!!!!!!!: #{user.inspect}"
-    user.follow(playlist, public: false)
-    Rails.logger.info "SAVED SPOTIFY PLAYLIST"
+    user = RSpotify::User.new(session[:spotify_oauth_data])
+    user.follow(playlist, public: true)
   end
 
   # POST /users/add_playlist/:playlist_id
