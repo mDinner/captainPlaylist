@@ -15,20 +15,12 @@
   <%= @user.password %>
 </p>
 
-<% @playlists.each do |plist| %>
-	<p><%= plist.inspect %></p>
-  <!-- <p class="playlist-label">Id</p>
-  <p class="playlist-data"><%= plist.id %></p>
-  <p class="playlist-label">Title</p>
-  <p class="playlist-data"><%= plist.inspect %></p>
-  <p class="playlist-label"> </p>
-  <p class="playlist-data"><%= plist.inspect %></p>
-  <p class="playlist-label"> </p>
-  <p class="playlist-data"><%= plist.inspect %></p>
-  <p class="playlist-label"> </p>
-  <p class="playlist-data"><%= plist.inspect %></p> -->
 
-<% end %>
+
+<div class="playlists-wrap">
+  <%= render partial: 'shared/playlist', collection: @playlists %>
+</div>
+
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

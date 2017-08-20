@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <h3 class="inline-title">Playlists</h3>
 
 <% unless current_user === nil %>
@@ -15,53 +14,10 @@
   </div>
 <% end %>
 
-<br>
-
-<form action="/search" method="get">
-  <p class="search-text">Search: </p>
-  <input type="text" name="query">
-  <input type="submit" value="Submit">
-</form>
+<%= render partial: 'shared/search'%>
 
 <div class="playlists-wrap">
-  <% @custom_playlists.each do |custom_playlist| %>
-    <div class="playlist">
-      <p class="title"><%= custom_playlist.name %></p>
-
-      <% if current_user === nil %>
-        <p type="submit" class="save-to-playlist not-logged-in"><%= link_to "Save to my Playlists", new_user_session_path %></p>
-      <% else %>
-        <%= link_to "Save to my Playlists", add_playlist_path(custom_playlist.id, custom_playlist.owner.id), {method: :post, class: 'save-to-playlist'} %>
-      <% end %>
-
-      <% if session[:spotify_user] === nil %>
-          <p class="save-to-spotify guest">Save to Spotify</p>
-      <% else %>
-        <%= link_to "Save to Spotify", follow_playlist_on_spotify_path(custom_playlist.id, custom_playlist.owner.id), {method: :post, class: 'save-to-spotify user'} %>
-      <% end %>
-      <div class="tracks">
-        <div class="add-playlist-modal"><!-- log into spotify button and show the playlist link for them to copy --></div>
-        <table>
-          <thead class="tracks_header">
-            <tr>
-              <th>Song</th>
-              <th>Artist</th>
-              <th>Album</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% custom_playlist.tracks.each do |track| %>
-              <tr>
-                <td><%= track.name %></td>
-                <td><%= track.artists[0].name %></td>
-                <td class="album_name"><%= track.album.name %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  <% end %>
+  <%= render partial: 'shared/playlist', collection: @custom_playlists %>
 </div>
 
 

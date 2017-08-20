@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @playlists = []
 
     @user.playlists.each do |p|
+      p = RSpotify::Playlist.find(p.origin_user, p.origin_id)
       @playlists << p
     end
 
