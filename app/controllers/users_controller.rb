@@ -110,6 +110,16 @@ class UsersController < ApplicationController
   # POST '/users/follow_playlist_on_spotify/:playlist_id/:playlist_owner_id'
   def follow_playlist_on_spotify
     playlist = RSpotify::Playlist.find(params[:playlist_owner_id], params[:playlist_id])
+    Rails.logger.info "session[:spotify_oauth_data]: #{session[:spotify_oauth_data]}"
+    
+    # reconnect user if needed
+    if session[:spotify_oauth_data] === nil
+      oauth_data = request.env['omniauth.auth']
+      Rails.logger.info "oauth_data: #{oauth_data}"      
+      @spotify_user = RSpotify::User.new(oauth_data)
+      session[:spotify_oauth_data] = oauth_data
+    end
+
     user = RSpotify::User.new(session[:spotify_oauth_data])
     user.follow(playlist, public: true)
   end
