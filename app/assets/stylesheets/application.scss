@@ -16,3 +16,34 @@
 @import "playlists";
 @import "scaffolds";
 @import "users";
+
+
+p, ol, ul, td { margin: 5px; }
+
+.alert {
+	position: absolute;
+	width: 90%;
+}
+
+.logout-btn {
+	background: #cac9c9;
+	border-radius: 40px;
+	color: black;
+	font-size: 15px;
+	padding: 5px 15px;
+	position: absolute;
+	right: 2vw;
+}
+
+.search-text {
+	display: inline-block;
+	margin: 0;
+	padding-right: 5px;
+}
+
+.spotify-id {
+	display: inline-block;
+	margin: 5px;
+	margin-left: 0;
+	padding-right: 5px;
+}
