@@ -145,14 +145,8 @@ class UsersController < ApplicationController
 
     if (playlist == nil)
       playlist_new = true
-      # playlist = Playlist.new(origin_id: playlist_id)
-      Rails.logger.info "playlist_owner_id: #{playlist_owner_id}"
-      Rails.logger.info "playlist_owner_id.to_s: #{playlist_owner_id.to_s}"
       playlist = Playlist.new(origin_id: playlist_id, origin_user: playlist_owner_id.to_s)
-      Rails.logger.info "playlist.inspect: #{playlist.inspect}"
-      Rails.logger.info "playlist.inspect: #{playlist.inspect}"
       user.playlists << playlist
-      # user.save!
     end
 
     # user_playlists = user.playlists
