@@ -10,6 +10,12 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @playlists = []
+
+    @user.playlists.each do |p|
+      @playlists << p
+    end
+
   end
 
   # GET /users/new
@@ -100,7 +106,6 @@ class UsersController < ApplicationController
 
     session[:spotify_oauth_data] = oauth_data
 
-    Rails.logger.info "spotify_user: #{@spotify_user.inspect}"
 
     session[:spotify_user] = @spotify_user
     # @spotify_user = spotify_user
@@ -110,7 +115,7 @@ class UsersController < ApplicationController
   # POST '/users/follow_playlist_on_spotify/:playlist_id/:playlist_owner_id'
   def follow_playlist_on_spotify
     playlist = RSpotify::Playlist.find(params[:playlist_owner_id], params[:playlist_id])
-    Rails.logger.info "session[:spotify_oauth_data]: #{session[:spotify_oauth_data]}"
+    # Rails.logger.info "session[:spotify_oauth_data]: #{session[:spotify_oauth_data]}"
     
     # reconnect user if needed
     if session[:spotify_oauth_data] === nil
@@ -124,28 +129,27 @@ class UsersController < ApplicationController
     user.follow(playlist, public: true)
   end
 
-  # POST /users/add_playlist/:playlist_id
+  # POST /users/add_playlist/:playlist_id/:playlist_owner_id
   def add_playlist
     playlist_id = params[:playlist_id]
-    Rails.logger.info "playlist_id #{playlist_id}"
-
+    playlist_owner_id = params[:playlist_owner_id]
 
     playlist = Playlist.where(origin_id: playlist_id).first
-    Rails.logger.info "PLAYLIST: #{playlist}"
 
     # playlist.destroy
     user = User.find(@current_user.id)
-    Rails.logger.info "user.playlists.length: #{user.playlists.length}"
-
-    Rails.logger.info "user.playlists: #{user.playlists}"
 
     # new playlist, create DB entry and add to user playlists
     playlist_new = false
 
     if (playlist == nil)
       playlist_new = true
-      Rails.logger.info "playlist IS NEW!!!"
-      playlist = Playlist.new(origin_id: playlist_id)
+      # playlist = Playlist.new(origin_id: playlist_id)
+      Rails.logger.info "playlist_owner_id: #{playlist_owner_id}"
+      Rails.logger.info "playlist_owner_id.to_s: #{playlist_owner_id.to_s}"
+      playlist = Playlist.new(origin_id: playlist_id, origin_user: playlist_owner_id.to_s)
+      Rails.logger.info "playlist.inspect: #{playlist.inspect}"
+      Rails.logger.info "playlist.inspect: #{playlist.inspect}"
       user.playlists << playlist
       # user.save!
     end
@@ -153,24 +157,12 @@ class UsersController < ApplicationController
     # user_playlists = user.playlists
     # if user doesn't have it
     user_playlist = user.playlists.where(origin_id: playlist_id).first
-    Rails.logger.info "USER_PLAYLIST: #{user_playlist.inspect}"
 
     if playlist_new === false and user_playlist == nil
-      Rails.logger.info "USER DOESN'T HAVE PLAYLIST"
       user.playlists << playlist
       # user.save!
     else
-      Rails.logger.info "USER HAS PLAYLIST"
     end
-
-
-
-
-    Rails.logger.info "user.playlists.LENGTH: #{user.playlists.length}"
-    Rails.logger.info "user.playlists[0]: #{user.playlists[0]}"
-    Rails.logger.info "user.playlists[1]: #{user.playlists[1]}"
-    Rails.logger.info "user.playlists[2]: #{user.playlists[2]}"
-    Rails.logger.info "user.playlists2: #{user.playlists}"
 
   end
 

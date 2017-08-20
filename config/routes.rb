@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # method in the users controller, then as: add_playlist refers
   # to what the helper path is generated (you can see it when
   # you run $ bin/rake routes)
-  post '/users/add_playlist/:playlist_id', to: 'users#add_playlist', as: 'add_playlist'
+  post '/users/add_playlist/:playlist_id/:playlist_owner_id', to: 'users#add_playlist', as: 'add_playlist'
   post '/users/follow_playlist_on_spotify/:playlist_id/:playlist_owner_id', to: 'users#follow_playlist_on_spotify', as: 'follow_playlist_on_spotify'
   get '/search/' => 'search#index'
  #  scope '/users' do

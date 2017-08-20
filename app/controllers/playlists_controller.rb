@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-  # before_action :set_playlist, only: [:show, :edit, :update, :destroy]
+  before_action :set_playlist, only: [:show, :edit, :update, :destroy]
   require 'rspotify'
   # GET /playlists
   # GET /playlists.json
@@ -7,23 +7,16 @@ class PlaylistsController < ApplicationController
   def index
     @custom_playlists = RSpotify::Playlist.search('Rock')
     @custom_playlists = @custom_playlists[0..19]
-
+    Rails.logger.info "@custom_playlists[0]:  #{@custom_playlists[0].inspect}"
+    Rails.logger.info "@custom_playlists[0]:  #{@custom_playlists[0].inspect}"
+    Rails.logger.info "@custom_playlists[0]:  #{@custom_playlists[0].inspect}"
+    Rails.logger.info "@custom_playlists[0]:  #{@custom_playlists[0].inspect}"
     Rails.logger.info "session[:spotify_user]: #{session[:spotify_user]}"
-  end
-
-  # GET /playlists/search/:query
-  def search_playlists_spotify
-    Rails.logger.info "params[:query]: #{params[:query]}"
-    Rails.logger.info "params.inspect: #{params.inspect}"
-    @custom_playlists = RSpotify::Playlist.search(params[:query])
-    @custom_playlists = @custom_playlists[0..19]
-    render 'search'
   end
 
   # GET /playlists/1
   # GET /playlists/1.json
   def show
-    # set_playlist
   end
 
   # GET /playlists/new
@@ -33,7 +26,6 @@ class PlaylistsController < ApplicationController
 
   # GET /playlists/1/edit
   def edit
-    set_playlist
   end
 
   # POST /playlists
@@ -55,7 +47,6 @@ class PlaylistsController < ApplicationController
   # PATCH/PUT /playlists/1
   # PATCH/PUT /playlists/1.json
   def update
-    set_playlist
     respond_to do |format|
       if @playlist.update(playlist_params)
         format.html { redirect_to @playlist, notice: 'Playlist was successfully updated.' }
@@ -70,7 +61,6 @@ class PlaylistsController < ApplicationController
   # DELETE /playlists/1
   # DELETE /playlists/1.json
   def destroy
-    set_playlist
     @playlist.destroy
     respond_to do |format|
       format.html { redirect_to playlists_url, notice: 'Playlist was successfully destroyed.' }

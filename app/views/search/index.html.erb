@@ -11,8 +11,8 @@
   <%= link_to 'Sign in with Spotify', '/auth/spotify', {class: 'sign_in_button'} %>
 <% else %>
   <div class="spotify-signed-in">
-    <p>Signed in as Spotify User: </p>
-    <h2><%= session[:spotify_user][:display_name] %></h2>
+    <p class="spotify-id">Signed in as Spotify User: </p>
+    <p class="spotify-id"><%= session[:spotify_user]["id"] %></p>
   </div>
 <% end %>
 
@@ -20,9 +20,7 @@
 
 
 <form action="/search" method="get">
-  Search: 
-  <br>
-  <br>
+  <p class="search-text">Search: </p>
   <input type="text" name="query">
   <input type="submit" value="Submit">
 </form>
