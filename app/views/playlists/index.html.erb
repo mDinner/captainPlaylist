@@ -1,20 +1,8 @@
 <p id="notice"><%= notice %></p>
-<h3 class="inline-title">Playlists</h3>
-
-<% unless current_user === nil %>
-  <%= link_to 'My Playlists', user_path(current_user.id), {class: 'profile-link'} %>
-<% end %>
-
-<% if session[:spotify_user] === nil || session[:spotify_user] === {} %>
-  <%= link_to 'Sign in with Spotify', '/auth/spotify', {class: 'sign_in_button'} %>
-<% else %>
-  <div class="spotify-signed-in">
-    <p class="spotify-id">Signed in as Spotify User: </p>
-    <p class="spotify-id"><%= session[:spotify_user]["id"] %></p>
-  </div>
-<% end %>
-
 <%= render partial: 'shared/search'%>
+
+
+
 
 <div class="playlists-wrap">
   <%= render partial: 'shared/playlist', collection: @custom_playlists %>

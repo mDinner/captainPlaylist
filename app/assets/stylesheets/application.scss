@@ -18,32 +18,69 @@
 @import "users";
 
 
-p, ol, ul, td { margin: 5px; }
-
-.alert {
-	position: absolute;
-	width: 90%;
-}
-
-.logout-btn {
-	background: #cac9c9;
-	border-radius: 40px;
-	color: black;
-	font-size: 15px;
-	padding: 5px 15px;
-	position: absolute;
-	right: 2vw;
-}
-
-.search-text {
-	display: inline-block;
+body {
+	color: #666;
 	margin: 0;
-	padding-right: 5px;
+
+	.alert {
+		top: 30px;
+	}
+
+	.alert, .notice {
+		position: absolute;
+		width: 90%;
+	}
+
+	.logout-btn {
+		color: #666;
+		float: right;
+		font-size: 15px;
+		padding: 0 25px;
+
+		&:hover {
+			margin-top: -10px;
+			background: rgba(189,189,189,0.31);
+			color: #666;
+			padding: 10px 25px;
+			text-decoration: none;
+		}
+	}
+
+	#navbar {
+		background: rgba(189,189,189,0.11);
+		border-bottom: 1px solid #666;
+		padding: 10px 0;
+
+		.profile-link, .sign_in_button {
+			color: #666;
+			font-size: 15px;
+			font-weight: 500;
+			padding: 0 10px;
+		}
+
+		.profile-link:hover, .sign_in_button:hover {
+			background: rgba(189,189,189,0.31);
+			color: #666;
+			padding: 10px 10px;
+			text-decoration: none;
+		}
+	}
+
+	.search-text {
+		display: inline-block;
+		margin: 0;
+		padding-right: 5px;
+	}
+
+	.spotify-id {
+		display: inline-block;
+		margin: 5px;
+		margin-left: 0;
+		padding-right: 5px;
+	}
 }
 
-.spotify-id {
-	display: inline-block;
+p, ol, ul, td { 
+	color: #979779;
 	margin: 5px;
-	margin-left: 0;
-	padding-right: 5px;
 }
