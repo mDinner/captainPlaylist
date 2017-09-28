@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@mixin playlistLinksHover {
+	background: #383838;
+	color: gold;
+	cursor: pointer;
+	text-decoration: none;	
+}
+
+
 body {
 	.main {
 
@@ -21,7 +29,7 @@ body {
 		}
 
 		.playlists-wrap {
-			///////////////////////////////////////.[]'
+			padding-left: 7%;
 
 		// Make title, track and artist all inline
 		// add add to my playlist button
@@ -50,16 +58,36 @@ body {
 					color: #fff;
 					display: inline-block;
 					left: 10px;
+					font-size: 13px;
+					margin-top: 0;
 					position: absolute;
 					top: 12px;
+
+					a { 
+						color: #fff;
+
+						&:hover, &:active {
+							@include playlistLinksHover;
+						}
+					}
 				}
 
 				.save-to-spotify {
 					color: #fff;
 					display: inline-block;
+					font-size: 14px;
+					margin-top: 0;
 					position: absolute;
 					right: 13px;
-					top: 13px;
+					top: 12px;
+
+					a { 
+						color: #fff;
+
+						&:hover, &:active {
+							@include playlistLinksHover;
+						}
+					}
 				}
 
 				.tracks_header {
@@ -74,9 +102,14 @@ body {
 					overflow: hidden;
 					overflow-y: scroll;
 
+					table {
+						width: 100%;
+
 						.album_name {
 							width: 150px;
 						}
+					}
+
 
 					// .track{
 					// 	display: block;
