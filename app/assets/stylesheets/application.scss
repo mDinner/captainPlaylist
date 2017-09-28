@@ -47,22 +47,35 @@ body {
 	}
 
 	#navbar {
-		background: rgba(189,189,189,0.11);
-		border-bottom: 1px solid #666;
-		padding: 10px 0;
+		background: black;
+		border-bottom: 1px solid dimgrey;
+		padding: 12px 0;
 
-		.profile-link, .sign_in_button {
-			color: #666;
+		a, .profile-link, .sign_in_button {
+			color: white;
 			font-size: 15px;
 			font-weight: 500;
-			padding: 0 10px;
+			padding: 10px 10px;
 		}
 
-		.profile-link:hover, .sign_in_button:hover {
+		a:hover, .profile-link:hover, .sign_in_button:hover {
 			background: rgba(189,189,189,0.31);
-			color: #666;
-			padding: 10px 10px;
+			color: white;
 			text-decoration: none;
+		}
+
+		.site-title {
+			color: white;
+			display: inline-block;
+			font-size: 16px;
+			font-weight: 500;
+			padding: 10px 25px;
+			text-transform: uppercase;
+
+			&:hover { 
+				cursor: pointer;
+				text-decoration: none;
+			}
 		}
 	}
 
@@ -78,6 +91,31 @@ body {
 		margin-left: 0;
 		padding-right: 5px;
 	}
+}
+
+
+form[action="/search"] {
+  margin-left: 10vw;
+  width: 80vw;
+
+  input[type="text"] {
+    font-size: 16px;
+    height: 40px;
+    margin: 20px 0 20px 5vw;
+    padding-left: 1vw;
+    width: 65vw;
+  }
+
+  input[type="submit"] {
+    background: black;
+    border: dimgrey;
+    color: white;
+    height: 40px;
+    vertical-align: top;
+    margin-left: -6px;
+    margin-top: 20px;
+    width: 5vw;
+  }
 }
 
 p, ol, ul, td { 
