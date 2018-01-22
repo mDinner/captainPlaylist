@@ -24,7 +24,7 @@
       <% else %>
         <div class="spotify-signed-in">
           <p class="spotify-id">Signed in as Spotify User: </p>
-          <p class="spotify-id"><%= session[:spotify_user]["id"] %></p>
+          <p class="spotify-id"><%= session.spotify_user.id %></p>
         </div>
       <% end %>
 
