@@ -30,7 +30,8 @@
 <div class="playlists-wrap">
   <% @custom_playlists.each do |custom_playlist| %>
     <div class="playlist">
-      <p class="title"><%= custom_playlist.name %></p>
+      <p class="title"><%= custom_playlist.name %> by: <%= custom_playlist.owner.display_name %></p>
+
         <% if current_user === nil %>
 
           <p type="submit" class="save-to-playlist not-logged-in"><%= link_to "Save to my Playlists", new_user_session_path %></p>

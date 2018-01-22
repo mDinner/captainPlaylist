@@ -21,21 +21,64 @@
 
 body {
 	.main {
+		border: 2px solid grey;
+		border-radius: 24px;
+		box-shadow: 0px 2px 6px;
+		margin: 100px auto;
+		padding: 40px 0px;
+		text-align: center;
+		width: 400px;
+
+		.custom-btn input {
+			background-color: #000;
+			border: 2px solid #fff;
+			border-radius: 30px;
+			color: #fff;
+			font-size: 18px;
+			margin: 15px 0;
+			min-width: 80%;
+			padding: 12px 25px;
+			text-transform: uppercase;
+
+			&:hover {
+				background-color: #fff;
+				border-radius: 30px;
+				border: 2px solid #000;
+				cursor: pointer;
+				color: #000;
+				font-weight: 600;
+			}
+		}
+
+		.login-title {
+			margin: 0 0 25px 0;
+		}
 
 		.inline-title {
 			display: inline-block;
+			padding: 10px 20px;
+		}
+
+		.profile-link {
+			font-size: 24px;
 		}
 
 		.sign_in_button {
-	    color: white;
-	    background-color: green;
-	    padding: 5px 10px;
-	    border-radius: 10px;
-	    text-decoration: none;
-	    display: inline-block;
+		    color: white;
+		    background-color: #1db954;
+		    padding: 10px 60px;
+		    border-radius: 20px;
+		    text-decoration: none;
+		    text-transform: uppercase;
+		    display: inline-block;
+		    margin-left: 25px;
+		    font-size: 15px;
+		    font-weight: 300;
+		    letter-spacing: 1.4px;
 
-	    &:visited { color: white; }
+		    &:visited { color: white; }
 		}
+
 
 		.playlists-wrap {
 			padding-left: 7%;
@@ -53,11 +96,17 @@ body {
 
 				.title {
 					color: lightgray;
+					letter-spacing: 0.8px;
 					margin: 8px auto;
 					font-size: 14px;
 					font-weight: 600;
 					text-align: center;
 					width: 50%;
+
+					span {
+						font-weight: 300;
+						letter-spacing: 0.6px;
+					}
 				}
 
 				.save-to-playlist {
