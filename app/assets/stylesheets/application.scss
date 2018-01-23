@@ -28,7 +28,10 @@ body {
 
 	.alert, .notice {
 		position: absolute;
-		width: 90%;
+		width: 400px;
+		left: calc(50% - 200px);
+		text-align: center;
+		top: 70px;
 	}
 
 	.logout-btn {
@@ -96,9 +99,12 @@ body {
 
 form[action="/search"] {
   margin-left: 10vw;
+  padding-top: 30px;
   width: 80vw;
 
   input[type="text"] {
+    border: 1px solid lightslategray;
+    border-radius: 50px;
     font-size: 16px;
     height: 40px;
     margin: 20px 0 20px 5vw;
@@ -107,12 +113,13 @@ form[action="/search"] {
   }
 
   input[type="submit"] {
-    background: black;
-    border: dimgrey;
+    background: #3373ca;
+    border: 1px solid #45525d;
+    border-radius: 50px;
     color: white;
     height: 40px;
     vertical-align: top;
-    margin-left: -6px;
+    margin-left: -99px;
     margin-top: 20px;
     width: 5vw;
   }

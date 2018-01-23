@@ -50,7 +50,11 @@ div {
 }
 
 #notice {
-  color: green;
+  top: 70px;
+  left: calc(50% - 150px);
+  position: absolute;
+  text-align: center;
+  width: 300px;
 }
 
 .field_with_errors {

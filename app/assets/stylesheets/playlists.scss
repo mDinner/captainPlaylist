@@ -1,14 +1,17 @@
 // Place all the styles related to the Playlists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 @mixin playlistLinks {
 	color: #fff;
 	display: inline-block;
-	font-size: 14px;
+	font-size: 13px;
+	letter-spacing: 0.2px;
 	margin-top: 0;
 	position: absolute;
-	top: 12px;
+	top: 10px;
 }
 
 @mixin playlistLinksHover {
@@ -21,13 +24,13 @@
 
 body {
 	.main {
-		border: 2px solid grey;
-		border-radius: 24px;
-		box-shadow: 0px 2px 6px;
-		margin: 100px auto;
-		padding: 40px 0px;
-		text-align: center;
-		width: 400px;
+		// border: 2px solid grey;
+		// border-radius: 24px;
+		// box-shadow: 0px 2px 6px;
+		// margin: 100px auto;
+		// padding: 40px 0px;
+		// text-align: center;
+		// width: 400px;
 
 		.custom-btn input {
 			background-color: #000;
@@ -81,7 +84,14 @@ body {
 
 
 		.playlists-wrap {
+			margin-top: 25px;
 			padding-left: 7%;
+
+			.title {
+				margin: 0 0 5px 25px;
+				font-size: 20px;
+				letter-spacing: 0.5px;
+			}
 
 			.playlist {
 				background-color: #383838;
@@ -94,6 +104,14 @@ body {
 				vertical-align: top;
 				width: 43%;
 
+				.playlist-source {
+					color: #1db954;
+				  font-weight: 600;
+				  font-size: 11px;
+				  letter-spacing: 0.6px;
+				  margin: -8px 0 10px 0;
+				}
+
 				.title {
 					color: lightgray;
 					letter-spacing: 0.8px;
@@ -101,11 +119,22 @@ body {
 					font-size: 14px;
 					font-weight: 600;
 					text-align: center;
-					width: 50%;
+					width: 95%;
 
-					span {
+					.name {
+						font-size: 15px;
+				    letter-spacing: 0.9px;
+						max-height: 20px;
+				    overflow: hidden;
+				    text-overflow: ellipsis;
+				    width: 100%;
+						white-space: nowrap;
+					}
+
+					.owner {
 						font-weight: 300;
 						letter-spacing: 0.6px;
+						margin: 5px 0 5px 0;
 					}
 				}
 
