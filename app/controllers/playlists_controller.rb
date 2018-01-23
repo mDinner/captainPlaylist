@@ -5,10 +5,9 @@ class PlaylistsController < ApplicationController
   # GET /playlists.json
   # Playlist home
   def index
-    @custom_playlists = RSpotify::Playlist.search('Rock')
+    @custom_playlists = RSpotify::Playlist.search('funky music')
     @custom_playlists = @custom_playlists[0..19]
-    Rails.logger.info "@custom_playlists[0]:  #{@custom_playlists[0].inspect}"
-    Rails.logger.info "@custom_playlists[0]:  #{@custom_playlists[0].inspect}"
+    @playlist_source = 'Spotify'
     Rails.logger.info "@custom_playlists[0]:  #{@custom_playlists[0].inspect}"
     Rails.logger.info "@custom_playlists[0]:  #{@custom_playlists[0].inspect}"
     Rails.logger.info "session[:spotify_user]: #{session[:spotify_user]}"

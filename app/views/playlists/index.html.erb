@@ -1,10 +1,16 @@
 <p id="notice"><%= notice %></p>
+
+<!-- search checkboxes
+	platforms to search on - make apple/tidal 'coming soon!'
+ -->
+
 <%= render partial: 'shared/search'%>
 
 
 
 
 <div class="playlists-wrap">
+	<div class="title">Displaying results for: 'funky music'</div>
   <%= render partial: 'shared/playlist', collection: @custom_playlists %>
 </div>
 
