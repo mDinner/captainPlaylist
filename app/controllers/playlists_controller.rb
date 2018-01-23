@@ -8,6 +8,7 @@ class PlaylistsController < ApplicationController
     @custom_playlists = RSpotify::Playlist.search('funky music')
     @custom_playlists = @custom_playlists[0..19]
     @playlist_source = 'Spotify'
+    @playlist_query = 'funky music'
     Rails.logger.info "@custom_playlists[0]:  #{@custom_playlists[0].inspect}"
     Rails.logger.info "@custom_playlists[0]:  #{@custom_playlists[0].inspect}"
     Rails.logger.info "session[:spotify_user]: #{session[:spotify_user]}"

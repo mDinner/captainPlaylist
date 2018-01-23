@@ -10,7 +10,7 @@
 
 
 <div class="playlists-wrap">
-	<div class="title">Displaying results for: 'funky music'</div>
+	<div class="title">Displaying results for: <%= @playlist_query %></div>
   <%= render partial: 'shared/playlist', collection: @custom_playlists %>
 </div>
 

@@ -1,4 +1,4 @@
-r4hclass UsersController < ApplicationController
+class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -156,7 +156,6 @@ r4hclass UsersController < ApplicationController
     if playlist_new === false and user_playlist == nil
       user.playlists << playlist
       # user.save!
-    else
     end
 
   end
