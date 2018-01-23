@@ -1,4 +1,12 @@
 <form action="/search" method="get">
+	<div class="search-source">
+	  <label>Spotify</label>
+	  <input type="checkbox" value="spotify" name="source" checked/>
+	  <label>Tidal(coming soon)</label>
+	  <input type="checkbox" value="tidal" name="source" disabled/>
+	  <label>Apple Music(coming soon)</label>
+	  <input type="checkbox" value="apple_music" name="source" disabled="true"/>
+	</div>
   <input type="text" name="query" placeholder="Search">
   <input type="submit" value="Submit">
 </form>

@@ -67,6 +67,24 @@ body {
 			text-decoration: none;
 		}
 
+
+		.network {
+			background-color: #000;
+			color: #fff;
+			display: inline-block;
+			font-size: 15px;
+	    letter-spacing: 0.7px;
+
+	    &.add {
+	    	font-size: 20px;
+
+	    	&:hover {
+	    		cursor: pointer;
+	    	}
+	    }
+		}
+
+
 		.site-title {
 			color: white;
 			display: inline-block;
@@ -96,15 +114,72 @@ body {
 	}
 }
 
+.connect-wrap {
+  box-shadow: 0px 1px 0px;
+	padding: 20px 0 20px 0;
+	text-align: center;
+
+	.connect {
+		display: inline-block;
+
+		&.close {
+			margin-right: 30px;
+			margin-top: 5px;
+			opacity: 0.5;
+
+			&:hover { 
+				cursor: pointer;
+				opacity: 1;
+			}
+		}
+
+		&.dropdown {
+			border-radius: 1px;
+			border: 1px solid #c9c9c9;
+			height: 32px;
+			min-width: 150px;
+			font-size: 15px;
+			letter-spacing: 0.6px;
+
+			&:hover {
+				cursor: pointer;
+			}
+		}
+
+		&.label {
+	    color: #8c8686;
+	    font-size: 18px;
+	    font-weight: 300;
+	    letter-spacing: 0.4px;
+	    padding-left: 30px;
+	    padding-right: 0;
+		}
+
+		&.submit {
+			height: 32px;
+	    letter-spacing: 1.1px;
+	    margin-left: 7px;
+	    vertical-align: top;
+		}
+	}
+}
+
 
 form[action="/search"] {
   margin-left: 10vw;
   padding-top: 30px;
   width: 80vw;
 
+  input[type="checkbox"] {
+    margin: 4px 0 0 3px;
+    // margin-top: 1px \9;
+    line-height: normal;
+    margin-right: 50px;
+  }
+
   input[type="text"] {
     border: 1px solid lightslategray;
-    border-radius: 50px;
+    border-radius: 5px 0px 0px 5px;
     font-size: 16px;
     height: 40px;
     margin: 20px 0 20px 5vw;
@@ -113,16 +188,25 @@ form[action="/search"] {
   }
 
   input[type="submit"] {
-    background: #3373ca;
+    background: #3364a7;
     border: 1px solid #45525d;
-    border-radius: 50px;
+    border-radius: 0px 5px 5px 0px;
     color: white;
     height: 40px;
     vertical-align: top;
-    margin-left: -99px;
+    margin-left: -5px;
     margin-top: 20px;
-    width: 5vw;
   }
+
+  label {
+  	display: inline-block;
+  }
+
+  .search-source {
+  	padding-left: 100px;
+  	display: flex;
+  }
+
 }
 
 
