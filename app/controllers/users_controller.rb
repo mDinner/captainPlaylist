@@ -17,6 +17,7 @@ class UsersController < ApplicationController
       @playlists << p
     end
 
+
   end
 
   # GET /users/new
@@ -102,16 +103,33 @@ class UsersController < ApplicationController
   # spotify_user.top_tracks(time_range: 'short_term') #=> (Track array)
 
   def spotify
+    # data is api connection
     oauth_data = request.env['omniauth.auth']
+    # create new api user w/connection
     @spotify_user = RSpotify::User.new(oauth_data)
-
+    # save api connection to session so we can 
+    # leave the connection open
     session[:spotify_oauth_data] = oauth_data
-
-
+    # save new user to session, if user exists in session
+    # it means they're logged in
     session[:spotify_user] = @spotify_user
-    # @spotify_user = spotify_user
+    # take to profile page
     render 'users/spotify_user'
   end
+
+
+
+  # 
+  # CREATE USER VIA ONE CLICK SPOTIFY CONNECTION
+  # 
+
+  
+
+
+
+
+
+
 
   # POST '/users/follow_playlist_on_spotify/:playlist_id/:playlist_owner_id'
   def follow_playlist_on_spotify

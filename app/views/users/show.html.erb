@@ -1,24 +1,26 @@
 <p id="notice"><%= notice %></p>
+<%= link_to 'Home', users_path, {class: 'home_button'}%>
 
-<p>
-  <strong>Name:</strong>
+<!-- <p>
+  <strong>Name: </strong>
   <%= @user.name %>
 </p>
 
 <p>
   <strong>Email:</strong>
   <%= @user.email %>
-</p>
+</p> -->
 
-<p>
+<!-- <p>
   <strong>Password:</strong>
   <%= @user.password %>
-</p>
+</p> -->
 
+<h2 id="user_playlist"> 
+<strong>All My Playlists</strong>
+</h2>
 <div class="playlists-wrap">
   <%= render partial: 'shared/playlist', collection: @playlists %>
 </div>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

@@ -1,6 +1,8 @@
-<h1>Editing User</h1>
+<div class="edit_user_form">
+	<h1 class="title">Edit My Profile</h1>
 
-<%= render 'form', user: @user %>
+	<%= render 'settings_form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+	<%= link_to 'Go to My Playlists', @user, {class: 'edit_user_show_button'} %>
+
+</div>
