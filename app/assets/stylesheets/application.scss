@@ -84,6 +84,10 @@ body {
 	    }
 		}
 
+		.settings-btn {
+			position: absolute;
+			right: 58px;
+		}
 
 		.site-title {
 			color: white;
@@ -118,6 +122,8 @@ body {
   box-shadow: 0px 1px 0px;
 	padding: 20px 0 20px 0;
 	text-align: center;
+	transition: height ease-in 600ms, opacity ease-in 600ms, padding ease-in 600ms;
+
 
 	.connect {
 		display: inline-block;
