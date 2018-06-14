@@ -14,7 +14,7 @@
 <%= render partial: 'shared/search'%>
 
 <div class="playlists-wrap">
-	<div class="title">Displaying playlists from search term "<%= @playlist_query %>"</div>
+	<div class="title">Showing playists matching "<%= @playlist_query %>"</div>
  <%= render partial: 'shared/playlist', collection: @custom_playlists %>
 </div>
 

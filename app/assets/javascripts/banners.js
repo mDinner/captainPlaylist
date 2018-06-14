@@ -36,4 +36,13 @@ $(document).ready(function(){
 	  $('#myInput').focus()
 	})
 
+
+	// open welcome modal if it exists
+	var modal = $('#welcome-modal')
+	if (modal) {		
+		$('#welcome-modal').modal({
+			show: true
+		})
+	}
+
 })
