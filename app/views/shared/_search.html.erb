@@ -2,16 +2,16 @@
 	<div class="search-source">
 	  <h3 class="title">Search streaming services:</h3>
 	  <div>
-		  <label>Spotify</label>
-		  <input type="checkbox" value="spotify" name="source" checked/>
+		  <label for="spotify-check">Spotify</label>
+		  <input type="checkbox" value="spotify" name="source" id="spotify-check" checked/>
 	  </div>
 	  <div>
-		  <label class="coming-soon">Tidal(soon...)</label>
-		  <input type="checkbox" value="tidal" name="source" disabled/>
+		  <label id="tidal-check" class="coming-soon">Tidal(soon...)</label>
+		  <input type="checkbox" value="tidal" name="source" id="tidal-check" disabled/>
 	  </div>
 	  <div>
-		  <label class="coming-soon">Apple Music(soon...)</label>
-		  <input type="checkbox" value="apple_music" name="source" disabled="true"/>
+		  <label id="apple-check" class="coming-soon">Apple Music(soon...)</label>
+		  <input type="checkbox" value="apple_music" name="source" id="apple-check" disabled="true"/>
 	  </div>
 	</div>
   <input type="text" name="query" placeholder="Search">

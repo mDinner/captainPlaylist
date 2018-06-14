@@ -44,13 +44,10 @@
 
       <% if current_user %>
           <%= link_to "Logout", destroy_user_session_path, {method: :delete, class: 'logout-btn'} %>
+          <%= link_to 'Settings', edit_user_path(current_user.id), { class: 'settings-btn'} %>
         <% else %>
           <%= link_to "Register", new_user_registration_path, { class: 'register'} %>
           <%= link_to "Login", new_user_session_path, { class: 'login'} %>
-      <% end %>
-
-      <% unless current_user === nil %>
-        <%= link_to 'Settings', edit_user_path(current_user.id), { class: 'settings-btn'} %>
       <% end %>
 
     </div>
