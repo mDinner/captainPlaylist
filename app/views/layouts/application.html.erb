@@ -19,19 +19,28 @@
         <%= link_to 'My Playlists', user_path(current_user.id), {class: 'profile-link'} %>
       <% end %>
 
-      <% if session[:spotify_user] === nil || session[:spotify_user] === {} %>
-        <%= link_to 'Sign in with Spotify', '/auth/spotify', {class: 'sign_in_button'} %>
-      <% else %>
-        <div class="spotify-signed-in">
-          <p class="spotify-id">Signed in as Spotify User: </p>
-          <p class="spotify-id"><%= session.spotify_user.id %></p>
-        </div>
-      <% end %>
+      <div class="network-logo-wrap">
+        <% if session[:spotify_user] === nil || session[:spotify_user] === {} %>
+          <div class="network-logo spotify"></div>
+        <% else %>
+          <div class="network-logo spotify active"></div>
+        <% end %>
 
-      <div class="network label">Networks: (None yet!)</div>
-      <div class="network add">+</div>
- 
-      <%= link_to 'Settings |', edit_user_path(@user), { class: 'settings-btn'} %>
+        <% if session[:tidal_user] === nil || session[:tidal_user] === {} %>
+          <div class="network-logo tidal"></div>
+        <% else %>
+          <div class="network-logo tidal active"></div>
+        <% end %>
+
+        <% if session[:apple_user] === nil || session[:apple_user] === {} %>
+          <div class="network-logo apple"></div>
+        <% else %>
+          <div class="network-logo apple active"></div>
+        <% end %>
+
+        <div class="connect-prompt">Click to Connect</div>
+      </div>
+
 
       <% if current_user %>
           <%= link_to "Logout", destroy_user_session_path, {method: :delete, class: 'logout-btn'} %>
@@ -39,6 +48,9 @@
           <%= link_to "Register", new_user_registration_path %>
           <%= link_to "Login", new_user_session_path %>
       <% end %>
+
+      <%= link_to 'Settings', edit_user_path(current_user.id), { class: 'settings-btn'} %>
+
     </div>
   	<div class="main">
 	    <%= yield %>
