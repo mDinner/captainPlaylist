@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170720010216) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "playlists", force: :cascade do |t|
     t.string   "title"
     t.string   "origin"
@@ -25,8 +28,8 @@ ActiveRecord::Schema.define(version: 20170720010216) do
   create_table "playlists_users", force: :cascade do |t|
     t.integer "playlist_id"
     t.integer "user_id"
-    t.index ["playlist_id"], name: "index_playlists_users_on_playlist_id"
-    t.index ["user_id"], name: "index_playlists_users_on_user_id"
+    t.index ["playlist_id"], name: "index_playlists_users_on_playlist_id", using: :btree
+    t.index ["user_id"], name: "index_playlists_users_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -45,8 +48,8 @@ ActiveRecord::Schema.define(version: 20170720010216) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "spotify_playlists",      default: "--- []\n"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
